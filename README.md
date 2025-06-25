@@ -10,5 +10,5 @@ http://imgfz.com/i/J2aMdF0.png
     src="http://imgfz.com/i/J2aMdF0.png"
     alt="Imagen de GitHub"
     class="rounded shadow-md"
-    width="300"
+    width="100%"
   />
