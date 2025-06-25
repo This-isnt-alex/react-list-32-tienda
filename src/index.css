@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-pink: #FF0066;
+  --gold: #FFD700;
+  --electric-blue: #00CCFF;
+  --charcoal: #1A1A1A;
+  --metallic-silver: #C0C0C0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #000000;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Custom animations */
+@keyframes countdownAnimation {
+  from {
+    stroke-dashoffset: 251.2;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink), 0 0 15px var(--neon-pink);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 30px var(--neon-pink);
+  }
+}
+
+@keyframes goldGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--gold), 0 0 10px var(--gold);
+  }
+  50% {
+    box-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 50%, 100% {
+    transform: scale(1);
+  }
+  25%, 75% {
+    transform: scale(1.1);
+  }
+}
+
+/* Utility classes */
+.neon-pink {
+  color: var(--neon-pink);
+}
+
+.gold {
+  color: var(--gold);
+}
+
+.font-bebas {
+  font-family: 'Bebas Neue', cursive;
+}
+
+.text-stroke-gold {
+  -webkit-text-stroke: 1px var(--gold);
+  text-stroke: 1px var(--gold);
+}
+
+.countdown-circle {
+  animation: countdownAnimation 1.5s ease-out forwards;
+}
+
+.zoom-effect {
+  animation: zoomIn 0.6s ease-out 1.5s forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out 1.8s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay {
+  animation: fadeIn 0.8s ease-out 2.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.neon-glow {
+  animation: neonGlow 2s infinite;
+}
+
+.gold-glow {
+  animation: goldGlow 2s infinite;
+}
+
+.pulse-line {
+  animation: pulse 2s infinite;
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s infinite;
+}
+
+/* Button hover effects */
+.cta-button {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+}
+
+/* Navigation fade effect */
+.nav-fade {
+  transition: opacity 0.3s ease;
+}
+
+.nav-fade.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Product card hover effects */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.product-card:hover .product-overlay {
+  opacity: 1;
+}
+
+/* Product image handling */
+.product-card img {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  background-color: #1a1a1a;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Image loading placeholder */
+.product-card img[alt]:before {
+  content: "Loading...";
+  display: block;
+  text-align: center;
+  line-height: 250px;
+  color: #666;
+  background: #1a1a1a;
+}
+
+/* Hero background image improvements */
+.hero-background {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
+
+/* Gradient text effects */
+.gradient-text {
+  background: linear-gradient(45deg, var(--neon-pink), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
